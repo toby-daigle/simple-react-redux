@@ -1,0 +1,40 @@
+form a {
+    margin-left: 5px;
+}
+
+.fade-enter {
+    right: 100px;
+    opacity: 0;
+}
+
+.fade-enter-active {
+    right: 0px;
+    opacity: 1.0;
+    transition: .5s ease-in all;
+}
+
+.fade-leave {
+    right: 0px;
+    opacity: 1.0;
+}
+
+.fade-leave-active {
+    right: -100px;
+    opacity: 0;
+    transition: .5s ease-out all;
+}
+
+body .modal {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    border-radius: 4px;
+    outline: none;
+    padding: 20px;
+    display: block;
+}
