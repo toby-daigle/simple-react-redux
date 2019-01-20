@@ -2,8 +2,13 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
 
 import {createPost} from '../actions';
+
+const Form = styled.form`
+	a: margin-left: 5px;
+`;
 
 class PostsNew extends Component {
 	constructor(props) {
@@ -35,13 +40,13 @@ class PostsNew extends Component {
 		const {handleSubmit} = this.props;
 
 		return (
-			<form onSubmit={handleSubmit(this.onSubmit)}>
+			<Form onSubmit={handleSubmit(this.onSubmit)}>
 				<Field label='Title' name='title' component={this.renderTextField}/>
 				<Field label='Categories' name='categories' component={this.renderTextField}/>
 				<Field label='Content' name='content' component={this.renderTextField}/>
 				<button type='submit' className='btn btn-primary'>Submit</button>
 				<Link to='/' className='btn btn-danger'>Cancel</Link>
-			</form>
+			</Form>
 		);
 	}
 }

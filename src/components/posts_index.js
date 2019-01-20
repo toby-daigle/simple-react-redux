@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { map } from 'lodash';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -20,21 +20,19 @@ class PostsIndex extends Component {
 		}
 	}
 
-	renderPosts() {
-		return _.map(this.props.posts, post => {
-				return (
-					<li key={post.id} className="list-group-item">
-						<input type="checkbox" value={post.id} onChange={this.handleChangeCheckbox.bind(this)}/>
-						<Link to={`/posts/${post.id}`}>
-							{` ${post.title}`}
-						</Link>
-					</li>
-				);
-			}
+	renderPost({id, title}){
+		return (
+			<li key={id} className="list-group-item">
+				<input type="checkbox" value={id} onChange={this.handleChangeCheckbox.bind(this)}/>
+				<Link to={`/posts/${id}`}>
+					{` ${title}`}
+				</Link>
+			</li>
 		);
 	}
 
 	render() {
+		const { posts } = this.props;
 		return (
 			<div>
 				<div className="text-xs-right">
@@ -45,7 +43,7 @@ class PostsIndex extends Component {
 				<hr/>
 				<h3>All Posts</h3>
 				<ul className="list-group">
-					{this.renderPosts()}
+					{map(posts, this.renderPost.bind(this))}
 				</ul>
 			</div>
 		);
