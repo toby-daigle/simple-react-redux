@@ -39,6 +39,7 @@ class PostsShow extends Component {
 				<Modal>
 					<button className='btn btn-danger pull-xs-right' onClick={this.onDeleteClick}>Delete Post</button>
 					<h3>{post.title}</h3>
+					<h2>{post.author}</h2>
 					<h6>Categories: {post.categories}</h6>
 					<p>{post.content}</p>
 				</Modal>

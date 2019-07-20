@@ -37,15 +37,16 @@ class PostsNew extends Component {
 	}
 
 	render() {
-		const {handleSubmit} = this.props;
+		const { handleSubmit } = this.props;
 
 		return (
 			<Form onSubmit={handleSubmit(this.onSubmit)}>
 				<Field label='Title' name='title' component={this.renderTextField}/>
+				<Field label='Author' name='author' component={this.renderTextField}/>
 				<Field label='Categories' name='categories' component={this.renderTextField}/>
 				<Field label='Content' name='content' component={this.renderTextField}/>
 				<button type='submit' className='btn btn-primary'>Submit</button>
-				<Link to='/' className='btn btn-danger'>Cancel</Link>
+				<Link to='/' className='btn btn-danger' style={{ marginLeft: '10px'}}>Cancel</Link>
 			</Form>
 		);
 	}
@@ -63,8 +64,12 @@ function validate(values) {
 	if (!values.content) {
 		errors.content = 'Enter some content.';
 	}
+	if (!values.author) {
+		errors.content = 'Enter an author name.';
+	}
+	console.log(values);
 
-	return errors;
+	return errors.title= '';
 }
 
 export default reduxForm({

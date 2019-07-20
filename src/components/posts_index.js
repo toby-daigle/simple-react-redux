@@ -1,10 +1,11 @@
-import { map } from 'lodash';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {image} from 'faker';
 import {fetchPosts, selectPost, unselectPost} from '../actions';
 
 import SelectedPostsList from './selected_posts_list';
+import PostsList from './posts_list';
 
 class PostsIndex extends Component {
 	componentDidMount() {
@@ -20,19 +21,8 @@ class PostsIndex extends Component {
 		}
 	}
 
-	renderPost({id, title}){
-		return (
-			<li key={id} className="list-group-item">
-				<input type="checkbox" value={id} onChange={this.handleChangeCheckbox.bind(this)}/>
-				<Link to={`/posts/${id}`}>
-					{` ${title}`}
-				</Link>
-			</li>
-		);
-	}
-
 	render() {
-		const { posts } = this.props;
+		const {posts} = this.props;
 		return (
 			<div>
 				<div className="text-xs-right">
@@ -42,9 +32,7 @@ class PostsIndex extends Component {
 				<SelectedPostsList/>
 				<hr/>
 				<h3>All Posts</h3>
-				<ul className="list-group">
-					{map(posts, this.renderPost.bind(this))}
-				</ul>
+				<PostsList posts={posts} />
 			</div>
 		);
 	}
